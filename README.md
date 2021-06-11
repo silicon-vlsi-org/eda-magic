@@ -1,8 +1,8 @@
 # MAGIC LAYOUT
-Version 8.3
+
 [Magic] is the most popular open-source Layout tool written in the 1980's at Berkeley by John Ousterhout (now famous for writing scripting languuage Tcl) and now maintained by Tim Edwards (opencircuitdesign.com/magic).
 
-This repo contains pre-compiled binaries/libraries/etc for **64-bit 18.04 Ubuntu Linux**. It's also tested on a light-weight Ubuntu-variant LXLE distro. If you are interested in compiling from the source, instructions in Section-[Compiling and Installing Magic](#compiling-and-installing-magic) should help.
+This repo contains pre-compiled binaries/libraries/etc of **Magic Version 8.3** for **64-bit 18.04 Ubuntu Linux**. It's also tested on a light-weight Ubuntu-variant LXLE distro. If you are interested in compiling from the source, instructions in Section-[Compiling and Installing Magic](#compiling-and-installing-magic) should help.
 
 ## Setting Up Magic
 **NOTE**: The below is path is an example. Just make sure it matches your particular path.
@@ -31,15 +31,15 @@ git checkout magic-8.3
 make
 make install
 ```
-  * **IMPORTANT** If this install directory needs to be used by other users by copying the install directory, replace the absolute path: eg. 
-  ```
-  /home/vlsi/eda-magic -> $MAGIC_HOME
-  ```
-  - Make the above change in the following files:
-  ```bash
+**IMPORTANT** If this install directory needs to be used by other users by copying the install directory, replace the absolute path: eg. 
+```
+$HOME/eda-magic -> $MAGIC_HOME
+```
+- Make the above change in the following files:
+```bash
   bin/magic, bin/ext2sim, bin/ext2spice, lib/magic/tcl/magic.tcl
-  ```
-  - Additionally, since the ```magic.tcl``` is sourced from ```bin/magic``` the environment variable needs to be passed by adding the following statement to ```magic.tcl```:
+```
+- Additionally, since the ```magic.tcl``` is sourced from ```bin/magic``` the environment variable needs to be passed by adding the following statement to ```magic.tcl```:
 ```tcl
 set MAGIC_HOME $::env(MAGIC_HOME)
 ```
