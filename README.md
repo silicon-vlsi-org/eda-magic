@@ -1,5 +1,5 @@
 # MAGIC LAYOUT
-### Current distribution version 8.3.0 
+### Current distribution version 8.3.178 
 Precompiled for **64b 18.04 Ubuntu and Ubuntu-based Linux**. It's also tested on a light-weight Ubuntu-variant LXLE distro. If you are interested in compiling from the source, instructions in [ADMIN.md:Compiling and Installing Magic](ADMIN.md) should help.
 
 [Magic] is the most popular open-source Layout tool written in the 1980's at Berkeley by John Ousterhout (now famous for writing scripting languuage Tcl) and now maintained by Tim Edwards (opencircuitdesign.com/magic).
@@ -14,9 +14,9 @@ Precompiled for **64b 18.04 Ubuntu and Ubuntu-based Linux**. It's also tested on
 - To download from the ```git``` repository:
   - ```git clone https://github.com/silicon-vlsi-org/eda-magic```
 - Change directory to the installed magic directory eg. ```cd eda-magic```
-- Checkout the desired version: ```git checkout v8.3.0```
+- Checkout the desired version: ```git checkout v8.3.178```
   - To make sure you are on the right version type ```git branch``` and your output should have a line like this :
-  - ```* (HEAD detached at v8.3.0)```
+  - ```* (HEAD detached at v8.3.178)```
 
 - Add the following environment variables in your `~/.bashrc` (**NOTE**: The path below is an example, make sure it matches your particular path) 
 
