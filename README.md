@@ -4,13 +4,29 @@ For **64b 18.04 Ubuntu and Ubuntu-based Linux**. It's also tested on a light-wei
 
 [Magic] is the most popular open-source Layout tool written in the 1980's at Berkeley by John Ousterhout (now famous for writing scripting languuage Tcl) and now maintained by Tim Edwards (opencircuitdesign.com/magic).
 
-## Setting Up Magic
-**NOTE**: The below is path is an example. Just make sure it matches your particular path.
+## Table of Content
+- [Downloading & Setting Up Magic](#downloading-&-setting-up-magic)
+
+## Downloading & Setting Up Magic
+
+- Change directory ```cd``` to install directory <INSTALL_DIR> e.g. ```/home/user/cad```
+- To download from the ```git``` repository:
+  - ```git clone https://github.com/silicon-vlsi-org/eda-magic```
+- Change directory to the installed magic directory eg. ```cd eda-magic```
+- Checkout the desired version: ```git checkout v8.3.0```
+  - To make sure you are on the right version type ```git branch``` and your output should have a line like this :
+  - ```* (HEAD detached at v8.3.0)```
+
+- Add the following environment variables in your `~/.bashrc` (**NOTE**: The path below is an example, make sure it matches your particular path) 
+
 ```bash
-export MAGIC_HOME=$HOME/eda-magic
+export MAGIC_HOME=<INSTALL_DIR>/eda-magic
 export CAD_ROOT=$MAGIC_HOME/lib
 export PATH=$PATH:$MAGIC_HOME/bin
 ```
+
+## Quick Start Guide
+Few examples are in the ```examples``` folder to quickly get you started.
 
 ## Compiling and Installing Magic
 **NOTE** This repo contains pre-compiled binaries/libraries/etc for **64-bit 18.04 Ubuntu Linux**. It's also tested on a light-weight Ubuntu-variant LXLE distro. If you are interested in compiling from the source, instructions in this section should help.
