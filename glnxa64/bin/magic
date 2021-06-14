@@ -13,7 +13,7 @@
 
 TCL_MAG_DIR=${CAD_ROOT}/magic/tcl
 if [ "${TCL_MAG_DIR}" = "/magic/tcl" ]; then
-   TCL_MAG_DIR=$MAGIC_HOME/lib/magic/tcl
+   TCL_MAG_DIR=/home/ubuntu/eda-bins/magic/lib/magic/tcl
 fi
 TKCON=true
 DNULL=

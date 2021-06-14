@@ -5,9 +5,6 @@
 
 global Opts
 
-#
-set MAGIC_HOME $::env(MAGIC_HOME)
-
 # If we called magic via the non-console script, then we want to reset
 # the environment variable HOME to its original value.
 
@@ -205,7 +202,7 @@ for {set i 0} {$i < $argc} {incr i 1} {
          lappend argafter [lindex $argv $i]
       }
       ^--version {
-	 puts stdout "8.3.176"
+	 puts stdout "8.3.178"
 	 exit 0
       }
       ^--prefix {
