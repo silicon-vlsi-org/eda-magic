@@ -41,12 +41,7 @@ $HOME/eda-bins/magic -> $MAGIC_HOME
 set MAGIC_HOME $::env(MAGIC_HOME)
 ```
 - Also, magic internally sets variable ```CAD_ROOT``` to the absolute path as well which fortunately can be set in the shell environment variable as well (eg. bashrc).
-- Set the following environment variables
-```bash
-export MAGIC_HOME=$HOME/eda-magic
-export CAD_ROOT=$MAGIC_HOME/lib
-export PATH=$PATH:$MAGIC_HOME/bin
-```
+- Set the environment variables as shown in [README.md](README.md)
 
 **CREATING A NEW RELEASE**
 Check out this [doc](https://docs.github.com/en/github/administering-a-repository/releasing-projects-on-github/managing-releases-in-a-repository) in docs.github.com on how to create and manage releases.
