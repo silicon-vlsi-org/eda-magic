@@ -1,8 +1,8 @@
 # MAGIC LAYOUT
+### Current distribution version 8.3.0 
+For **64b 18.04 Ubuntu and Ubuntu-based Linux**. It's also tested on a light-weight Ubuntu-variant LXLE distro. If you are interested in compiling from the source, instructions in Section-[Compiling and Installing Magic](#compiling-and-installing-magic) should help.
 
 [Magic] is the most popular open-source Layout tool written in the 1980's at Berkeley by John Ousterhout (now famous for writing scripting languuage Tcl) and now maintained by Tim Edwards (opencircuitdesign.com/magic).
-
-This repo contains pre-compiled binaries/libraries/etc of **Magic Version 8.3** for **64-bit 18.04 Ubuntu Linux**. It's also tested on a light-weight Ubuntu-variant LXLE distro. If you are interested in compiling from the source, instructions in Section-[Compiling and Installing Magic](#compiling-and-installing-magic) should help.
 
 ## Setting Up Magic
 **NOTE**: The below is path is an example. Just make sure it matches your particular path.
