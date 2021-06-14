@@ -19,7 +19,7 @@ This documentation is NOT for users, only if you are interested to compile, inst
 - Configure: To see all configure options ```./configure -----help```. To install in root with all default options just type ```./configure```
 - To install it in a user directory for eg. in ```$HOME/eda-bins/magic```: 
 ```bash 
-./configure --prefix=$HOME/eda-magic
+./configure --prefix=$HOME/eda-bins/magic
 ```
 - Make and install:
 ```bash
