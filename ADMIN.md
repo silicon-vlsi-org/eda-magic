@@ -44,6 +44,7 @@ set MAGIC_HOME $::env(MAGIC_HOME)
 - Set the environment variables as shown in [README.md](README.md)
 
 **CREATING A NEW RELEASE**
+
 Check out this [doc](https://docs.github.com/en/github/administering-a-repository/releasing-projects-on-github/managing-releases-in-a-repository) in docs.github.com on how to create and manage releases.
   
 - Check out the difference between the previous and current version: eg.
