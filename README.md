@@ -21,7 +21,7 @@ Precompiled for **64b 18.04 Ubuntu and Ubuntu-based Linux**. It's also tested on
 - Add the following environment variables in your `~/.bashrc` (**NOTE**: The path below is an example, make sure it matches your particular path) 
 
 ```bash
-export MAGIC_HOME=<INSTALL_DIR>/glnxa64/eda-magic
+export MAGIC_HOME=<INSTALL_DIR>/eda-magic/glnxa64
 export CAD_ROOT=$MAGIC_HOME/lib
 export PATH=$PATH:$MAGIC_HOME/bin
 ```
