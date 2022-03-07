@@ -1,7 +1,7 @@
 # ADMIN
 This documentation is NOT for users, only if you are interested to compile, install and mange releases as done in this repo.
 
-## Compiling and Installing Magic
+## Compiling and Installing Magic on Ubuntu 18.04
 
 **SETTING UP LINUX FOR COMPILE**
 
@@ -43,7 +43,13 @@ set MAGIC_HOME $::env(MAGIC_HOME)
 - Also, magic internally sets variable ```CAD_ROOT``` to the absolute path as well which fortunately can be set in the shell environment variable as well (eg. bashrc).
 - Set the environment variables as shown in [README.md](README.md)
 
-**CREATING A NEW RELEASE**
+## Compiling and Installing on CentOS 7.9 (Core)
+
+- Setup as described in the ngspice section
+- Additionally check to see if the following packages have been installed: `tcsh` `csh` `tcl/tcl-devel` `tk/tk-devel` `cairo/cairo-devel/cairo-tools` `python3` `mesa-libGLw-devel` `mesa-libGL-devel` `mesa-libGLw-devel`
+- Then compile the same as ngspice
+
+## Creating a New Release
 
 Check out this [doc](https://docs.github.com/en/github/administering-a-repository/releasing-projects-on-github/managing-releases-in-a-repository) in docs.github.com on how to create and manage releases.
   
