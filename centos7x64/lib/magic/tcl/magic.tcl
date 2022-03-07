@@ -4,6 +4,8 @@
 # the same directory. Also see comments in shell script "magic.sh".
 
 global Opts
+# This was set post-install
+set MAGIC_HOME $::env(MAGIC_HOME)
 
 # If we called magic via the non-console script, then we want to reset
 # the environment variable HOME to its original value.
