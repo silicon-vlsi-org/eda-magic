@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+  <STYLE type="text/css">
+    H1 {color: black }
+    H2 {color: maroon }
+    H3 {color: #007090 }
+    A.head:link {color: #0060a0 }
+    A.head:visited {color: #3040c0 }
+    A.head:active {color: white }
+    A.head:hover {color: yellow }
+    A.red:link {color: red }
+    A.red:visited {color: maroon }
+    A.red:active {color: yellow }
+  </STYLE>
+</HEAD>
+<TITLE>Magic-7.3 Command Reference</TITLE>
+<BODY BACKGROUND=graphics/blpaper.gif>
+<H1> <IMG SRC=graphics/magic_title8_2.png ALT="Magic VLSI Layout Tool Version 8.2">
+     <IMG SRC=graphics/magic_OGL_sm.gif ALIGN="top" ALT="*"> </H1>
+
+<H2>findlabel</H2>
+<HR>
+Set the cursor box to the location of the indicated label
+<HR>
+
+<H3>Usage:</H3>
+   <BLOCKQUOTE>
+      <B>findlabel</B> [<B>-glob</B>] <I>label</I> [<I>occur</I>]<BR><BR>
+      <BLOCKQUOTE>
+         where <I>label</I> is the name of an existing label in magic,
+	 and optional argument <I>occur</I> is an integer.
+      </BLOCKQUOTE>
+   </BLOCKQUOTE>
+
+<H3>Summary:</H3>
+   <BLOCKQUOTE>
+      The <B>findlabel</B> command can be used to center the cursor box
+      on a specific named label in the layout. <P>
+
+      The <B>-glob</B> option causes <B>findlabel</B> to find all labels
+      containing the text pattern of <I>label</I>.  This is the way the
+      <B>findlabel</B> command worked in versions of <B>magic</B> prior
+      to 7.2.  <P>
+
+      The optional argument <I>occur</I> will center the cursor box on the
+      <I>N</I>th instance of the label, where <I>N</I>=<I>occur</I>
+      (option introduced in version 8.3.86).  If <I>occur</I> is greater
+      than the number of labels in the edit cell, then the result is the
+      same as for a label that is not found.
+   </BLOCKQUOTE>
+
+<H3>Implementation Notes:</H3>
+   <BLOCKQUOTE>
+      <B>findlabel</B> is implemented as a built-in command in <B>magic</B>.
+   </BLOCKQUOTE>
+
+<P><IMG SRC=graphics/line1.gif><P>
+<TABLE BORDER=0>
+  <TR>
+    <TD> <A HREF=commands.html>Return to command index</A>
+  </TR>
+</TABLE>
+<P><I>Last updated:</I> November 20, 2020 at 10:18am <P>
+</BODY>
+</HTML>

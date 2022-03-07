@@ -1,0 +1,184 @@
+<HTML>
+<HEAD>
+  <STYLE type="text/css">
+    H1 {color: black }
+    H2 {color: maroon }
+    H3 {color: #007090 }
+    A.head:link {color: #0060a0 }
+    A.head:visited {color: #3040c0 }
+    A.head:active {color: white }
+    A.head:hover {color: yellow }
+    A.red:link {color: red }
+    A.red:visited {color: maroon }
+    A.red:active {color: yellow }
+  </STYLE>
+</HEAD>
+<TITLE>Magic-7.3 Command Reference</TITLE>
+<BODY BACKGROUND=graphics/blpaper.gif>
+<H1> <IMG SRC=graphics/magic_title8_2.png ALT="Magic VLSI Layout Tool Version 8.2">
+     <IMG SRC=graphics/magic_OGL_sm.gif ALIGN="top" ALT="*"> </H1>
+
+<H2>iroute</H2>
+<HR>
+Do interactive point-to-point routing from the pointer cursor to the
+cursor box
+<HR>
+
+<H3>Usage:</H3>
+   <BLOCKQUOTE>
+      <B>iroute</B> <I>option</I> <BR><BR>
+      <BLOCKQUOTE>
+         where <I>option</I> may be one of the following:
+	 <DL>
+	   <DT><B>contacts</B> [<I>type</I>] [<I>parameter</I>] [<I>value</I>...]
+	   <DD> Set route-contact parameters. <I>parameter</I> may be one of
+		the following keywords:
+		<DL>
+		  <DT> <B>active</B>
+		  <DD>
+		  <DT> <B>width</B>
+		  <DD>
+		  <DT> <B>cost</B>
+		  <DD>
+		</DL>
+	   <DT> <B>help</B> [<I>option_name</I>]
+	   <DD> Summarize iroute subcommands
+	   <DT> <B>layers</B> [<I>type</I>] [<I>parameter</I>] [<I>value</I>...]
+	   <DD> Set route-layer parameters.  <I>parameter</I> may be one of
+		the following keywords:
+		<DL>
+		  <DT> <B>active</B>
+		  <DD>
+		  <DT> <B>width</B>
+		  <DD>
+		  <DT> <B>hCost</B>
+		  <DD>
+		  <DT> <B>vCost</B>
+		  <DD>
+		  <DT> <B>jogCost</B>
+		  <DD>
+		  <DT> <B>hintCost</B>
+		  <DD>
+		</DL>
+	   <DT> <B>route</B> <I>node_name</I>...
+	   <DD> Connect point to named node(s)
+	   <DT> <B>route</B> <I>option</I>...
+	   <DT> Connect points as specified in the options.  <I>option</I> my
+		be one of the following:
+		<DL>
+		   <DT> <B>-dbox</B>
+		   <DD> Route to the area of the cursor box.
+		   <DT> <B>-dlabel</B> <I>node_name</I>
+		   <DD> Route to the destination network named <I>node_name</I>.
+			The name may be hierarchical, specifying a labeled node
+			in a nested list of subcell instances.
+		   <DT> <B>-dlayers</B> <I>layer_list</I>
+		   <DD> Force the route to end on of one the layers in the
+			comma-separated list.
+		   <DT> <B>-drect</B> <I>llx lly urx ury</I>
+		   <DD> Force the route to end within the designated rectangular
+			area.
+		   <DT> <B>-dselection</B>
+		   <DD> Force the route to end on the area of selected paint.
+		   <DT> <B>-scursor</B>
+		   <DD> Start the route at the cursor position.
+		   <DT> <B>-slabel</B> <I>node_name</I>
+		   <DD> Route from the start network named <I>node_name</I>.
+			The name may be hierarchical, specifying a labeled node
+			in a nested list of subcell instances.
+		   <DT> <B>-slayers</B> <I>layer_list</I>
+		   <DD> Force the route to start on one of the layers in the
+			comma-separated list.
+		   <DT> <B>-spoint</B> <I>px py</I>
+		   <DD> Start the route at the indicated point.
+		   <DT> <B>-timeout</B> <I>value</I>
+		   <DD> If the maze router is unable to find a valid
+			route, it may wander off into an indefinitely
+			long search.  The search can be interrupted by
+			typing a control-C into the calling terminal,
+			but one can also specify a timed break using
+			the timeout option, where <I>value</I> is in
+			seconds.  Typically, 4 or 5 seconds is a useful
+			value.
+		</DL>
+		By far, the most useful and most common invocation is
+		"<B>iroute route -slabel</B> <I>sname</I> <B>-dlabel</B>
+		<I>dname</I>" to route between two named pins.
+	   <DD> Write out all irouter parameters.  These are written out
+		as command calls so they can be read back with the Tcl
+		<B>source</B> command.
+	   <DT> <B>search</B> <B>rate</B>|<B>width</B>
+	   <DD> Set parameters controlling the internal search for routes
+	   <DT> <B>spacings</B> <I>type</I>
+	   <DD> Set minimum spacing between route-type and arbitrary type
+	   <DT> <B>verbosity</B> <I>level</I>
+	   <DD> Control the amount of messages printed
+	   <DT> <B>version</B>
+	   <DD> Identify irouter version
+	   <DT> <B>wizard</B> <I>parameter</I>
+	   <DD> Set miscellaneous parameters.  <I>parameter</I> may be one of
+		the following keywords:
+		<DL>
+		  <DT> <B>bloom</B>
+		  <DD>
+		  <DT> <B>boundsIncrement</B>
+		  <DD>
+		  <DT> <B>estimate</B>
+		  <DD>
+		  <DT> <B>expandDests</B>
+		  <DD>
+		  <DT> <B>penalty</B>
+		  <DD>
+		  <DT> <B>penetration</B>
+		  <DD>
+		  <DT> <B>window</B>
+		  <DD>
+		</DL>
+	 </DL>
+      </BLOCKQUOTE>
+   </BLOCKQUOTE>
+
+<H3>Summary:</H3>
+   <BLOCKQUOTE>
+      The <B>iroute</B> command invokes Magic's maze router algorithm.
+      This is a point-to-point, over-the-cell algorithm based on costs
+      specified in the technology file's "<B>mzrouter</B>" section,
+      style "<B>iroute</B>".  It is not a channel router, and will
+      select the best path to connect the chosen start and destination
+      nodes, using whatever layers are specified as active in the
+      technology file, switching layers and adding contacts as
+      necessary, and avoiding obstacles.  The quality of the route is
+      highly dependent upon both the existing layout and the cost
+      specification. <P>
+
+      Special layer types "<B>fence</B>", "<B>rotate</B>", and "<B>magnet</B>"
+      are built-in types available in all technologies.  Painting the
+      "<B>fence</B>" layer creates a boundary inside of which Magic will
+      not route.  Under a block of "<B>rotate</B>" layer paint, Magic will
+      reverse the vertical and horizontal costs of all layers.  If the
+      technology file specifies unbalanced horizontal and vertical costs,
+      for example to tend to force horizontal routes in metal2 and vertical
+      routes in metal3, then areas painted with "rotate" will tend to get
+      horizontal routes in metal3 and vertical routes in metal2.
+   </BLOCKQUOTE>
+
+<H3>Implementation Notes:</H3>
+   <BLOCKQUOTE>
+      <B>iroute</B> is implemented as a built-in command in <B>magic</B>.
+   </BLOCKQUOTE>
+
+<H3>See Also:</H3>
+   <BLOCKQUOTE>
+      <A HREF=route.html><B>route</B></A> <BR>
+      <A HREF=garoute.html><B>garoute</B></A> <BR>
+   </BLOCKQUOTE>
+
+<P><IMG SRC=graphics/line1.gif><P>
+<TABLE BORDER=0>
+  <TR>
+    <TD> <A HREF=commands.html>Return to command index</A>
+  </TR>
+</TABLE>
+<P><I>Last updated:</I> March 7, 2020 at 1:06pm <P>
+</BODY>
+</HTML>

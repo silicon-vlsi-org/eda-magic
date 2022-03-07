@@ -1,0 +1,226 @@
+<HTML>
+<HEAD>
+  <STYLE type="text/css">
+    H1 {color: black }
+    H2 {color: maroon }
+    H3 {color: #007090 }
+    A.head:link {color: #0060a0 }
+    A.head:visited {color: #3040c0 }
+    A.head:active {color: white }
+    A.head:hover {color: yellow }
+    A.red:link {color: red }
+    A.red:visited {color: maroon }
+    A.red:active {color: yellow }
+  </STYLE>
+</HEAD>
+<TITLE>Magic-7.3 Command Reference</TITLE>
+<BODY BACKGROUND=graphics/blpaper.gif>
+<H1> <IMG SRC=graphics/magic_title8_2.png ALT="Magic VLSI Layout Tool Version 8.2">
+     <IMG SRC=graphics/magic_OGL_sm.gif ALIGN="top" ALT="*"> </H1>
+
+<H2>ext, extract</H2>
+<HR>
+Circuit netlist extractor
+<HR>
+
+<H3>Usage:</H3>
+   <BLOCKQUOTE>
+      <B>extract</B> <I>option</I> <BR><BR>
+      <BLOCKQUOTE>
+         where <I>option</I> may be one of the following:
+	 <DL>
+	   <DT> <B>all</B>
+	   <DD> Extract the root cell and all its children.  This bypasses
+		the incremental extraction and ensures that a new <TT>.ext</TT>
+		file is written for every cell definition.
+	   <DT> <B>cell</B> <I>name</I>
+	   <DD> Extract the currently selected cell into file <I>name</I>
+	   <DT> <B>do</B>|<B>no</B> [<I>option</I>]
+	   <DD> Enable or disable an extractor option, where <I>option</I>
+		may be one of the following:
+	      <BLOCKQUOTE>
+		<DL>
+		  <DT> <B>capacitance</B>
+		  <DD> Extract local parasitic capacitance values to substrate
+		  <DT> <B>resistance</B>
+		  <DD> Extract lumped resistance values.  Note that this
+			is <I>not</I> the same as full parasitic resistance.
+			The values extracted are "lumped" resistance and
+			indicate the value for which the delay through the
+			net can be computed with R times C, where R is the
+			lumped resistance and C is the parasitic capacitance.
+			This is a very coarse approximation, as it assumes
+			equal delay from the driver to any receiver.  For
+			full R-C extraction, see the <B>extresist</B>
+			command.  Lumped resistances have no meaning in
+			SPICE netlists and will only be used when running
+			<B>ext2sim</B> to generate a .sim netlist.
+		  <DT> <B>coupling</B>
+		  <DD> Extract the parasitic coupling capacitance between
+			nodes.
+		  <DT> <B>length</B>
+		  <DD> Extract the length of the shortest path from a driver
+			to a receiver, for computing more accurate parasitic
+			resistances.
+		  <DT> <B>adjust</B>
+		  <DD> Adjust all capacitances for overlap between a parent
+			cell and child instance, or between instances in an
+			array.  Parasitic capacitance is removed to account
+			for the amount of overlap.  Note that this method
+			can produce negative capacitors in the parent.  When
+			the netlist is flattened for simulation, the total
+			of all capacitances in parent and child, or between
+			array instances, is guaranteed to be strictly positive.
+		  <DT> <B>all</B>
+		  <DD> Apply all standard options (does not include options
+			"local", "labelcheck", or "aliases").
+		  <DT> <B>local</B>
+		  <DD> Write all .ext files to the current working directory.
+			If not specified, each .ext file will be placed in the
+			same directory as the .mag file from which it is
+			derived, unless the .mag file is in a directory which
+			is not writable.  In that case, the .ext file will also
+			be written to the current working directory.
+		  <DT> <B>labelcheck</B>
+		  <DD> Check for labels which have zero area and connect
+			to a subcell on the edge;  this case is rare but is
+			computationally expensive to check for, so the feature
+			is disabled by default.
+		  <DT> <B>aliases</B>
+		  <DD> By default (starting with version 8.3.217), magic only
+			extracts a single name for a net, unless the net connects
+			to a port, in which case the port name is extracted as
+			well.  With the <B>aliases</B> option enabled, all names
+			for a net are extracted;  this can be useful for debugging
+			but will usually just slow down processing by commands
+			like "ext2spice" that use the .ext file contents, so it
+			is disabled by default.
+		</DL>
+	      </BLOCKQUOTE>
+		These options (except for "local") determine how much
+		information is written to the output file.  By default,
+		all options are selected.  Normally, the options in
+		<B>ext2spice</B> or <B>ext2sim</B> are used to select
+		which information from the .ext file is used in the
+		resulting netlist.  There is no need to restrict the
+		information being extracted.  All options add relatively
+		little overhead to the extraction time.  The output file
+		size can be reduced by not generating some extraction
+		information.
+
+	   <DT> <B>length</B> [<I>option</I>]
+	   <DD> Control pathlength extraction information, where <I>option</I>
+		may be one of the following:
+	      <BLOCKQUOTE>
+		<DL>
+	          <DT> <B>driver</B> <I>termname</I>
+		  <DD>
+	          <DT> <B>receiver</B> <I>termname</I>
+		  <DD>
+	          <DT> <B>clear</B>
+		  <DD>
+		</DL>
+	      </BLOCKQUOTE>
+	
+	   <DT> <B>help</B>
+	   <DD> Print help information
+	   <DT> <B>parents</B>
+	   <DD> Extract the selected cell and all its parents
+	   <DT> <B>showparents</B>
+	   <DD> List the cell and all parents of selected cell.  Note that
+		this is not really an extract option and is superceded by
+		the <B>cellname</B> command.
+	   <DT> [<B>list</B>|<B>listall</B>] <B>style</B> [<I>stylename</I>]
+	   <DD> Set the current extraction style to <I>stylename</I>.
+		Without arguments, print the current extraction style.
+		With keyword <B>list</B>, return the current extraction
+		style as a Tcl result.  With keyword <B>listall</B>, return
+		all valid extraction styles for the technology as a Tcl
+		list.
+	   <DT> <B>unique</B> [<I>#</I>]
+	   <DD> Generate unique names when different nodes have the same name.
+		When option "<I>#</I>" is present, only make unique names for
+		labels tagged by ending with the "<B>#</B>" character. <BR>
+		<I>Warning:</I>  This operation immediately modifies the
+		existing layout in preparation for extraction.  Label
+		modifications are permanent, and cannot be undone.  All
+		cells in the hierarchy may potentially be modified. <BR>
+	   <DT> <B>unique</B> [<I>option</I>]
+	   <DD> (From Magic 8.1.24) With no option, generate unique names
+		when different nodes have the same name.  <I>option</I> may
+		be one of the following:
+		<BLOCKQUOTE>
+		  <DL>
+		    <DT> <B>all</B>
+		    <DD> Equivalent to no option;  all labels with the same
+			 name on different nets are given unique names.
+		    <DT> <B>#</B>
+		    <DD> Labels that are tagged by ending with the character
+			 "<B>#</B>" are made unique for each instance on an
+			 electrically unique node.
+		    <DT> <B>noports</B>
+		    <DD> Labels that are not ports are made unique when on
+			 different nets.  Ports, however, are ignored.  This
+			 option is useful for standard cells which may be
+			 hiding internal connectivity.
+		    <DT> <B>notopports</B>
+		    <DD> This option behaves like <B>extract unique noports</B>
+			 on the topmost cell in the hierarchy, and otherwise
+			 behaves like <B>extract unique all</B> on all cells
+			 below the top (available from magic 8.3.205).
+		  </DL>
+		</BLOCKQUOTE>
+		<I>Warning:</I>  This operation immediately modifies the
+		existing layout in preparation for extraction.  Label
+		modifications are permanent, and cannot be undone.  All
+		cells in the hierarchy may potentially be modified. <BR>
+	   <DT> <B>warn</B> [[<B>no</B>] <I>option</I>]
+	   <DD> Enable/disable reporting of non-fatal errors, where <I>option</I>
+		may be one of the following:
+	      <BLOCKQUOTE>
+		<DL>
+		  <DT> <B>fets</B>
+		  <DD>
+		  <DT> <B>labels</B>
+		  <DD>
+		  <DT> <B>dup</B>
+		  <DD>
+		  <DT> <B>all</B>
+		  <DD>
+		</DL>
+	      </BLOCKQUOTE>
+	 </DL>
+      </BLOCKQUOTE>
+   </BLOCKQUOTE>
+
+<H3>Summary:</H3>
+   <BLOCKQUOTE>
+        With no options given, the <B>extract</B> command incrementally
+	extracts the root cell and all its children into separate
+	<TT>.ext</TT> files.  With options, the effect is as described
+	in the Usage section above.
+   </BLOCKQUOTE>
+
+<H3>Implementation Notes:</H3>
+   <BLOCKQUOTE>
+      <B>extract</B> is implemented as a built-in <B>magic</B> command. <P>
+      <B>ext</B> is an alias for command <B>extract</B> (allowed
+      abbreviation where the usage would otherwise be ambiguous).
+   </BLOCKQUOTE>
+
+<H3>See Also:</H3>
+   <BLOCKQUOTE>
+      <A HREF=extresist.html><B>extresist</B></A> <BR>
+      <A HREF=ext2spice.html><B>ext2spice</B></A> <BR>
+      <A HREF=ext2sim.html><B>ext2sim</B></A> <BR>
+   </BLOCKQUOTE>
+
+<P><IMG SRC=graphics/line1.gif><P>
+<TABLE BORDER=0>
+  <TR>
+    <TD> <A HREF=commands.html>Return to command index</A>
+  </TR>
+</TABLE>
+<P><I>Last updated:</I> October 8, 2021 at 4:56pm <P>
+</BODY>
+</HTML>
