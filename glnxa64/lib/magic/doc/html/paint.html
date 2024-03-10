@@ -13,9 +13,9 @@
     A.red:active {color: yellow }
   </STYLE>
 </HEAD>
-<TITLE>Magic-7.3 Command Reference</TITLE>
+<TITLE>Magic-8.3 Command Reference</TITLE>
 <BODY BACKGROUND=graphics/blpaper.gif>
-<H1> <IMG SRC=graphics/magic_title2.gif ALT="Magic VLSI Layout Tool Version 7.3">
+<H1> <IMG SRC=graphics/magic_title8_3.png ALT="Magic VLSI Layout Tool Version 8.3">
      <IMG SRC=graphics/magic_OGL_sm.gif ALIGN="top" ALT="*"> </H1>
 
 <H2>paint</H2>
@@ -33,9 +33,10 @@ Paint mask information into the current edit cell
 
 <H3>Usage:</H3>
    <BLOCKQUOTE>
-      <B>paint</B> <I>layers</I>|<B>cursor</B> <BR><BR>
+      <B>paint</B> <I>layers</I>|<B>cursor</B>|<B>pick</B> <I>x y</I> <BR><BR>
       <BLOCKQUOTE>
-         where <I>layers</I> is a comma-separated list of types to paint.
+         where <I>layers</I> is a comma-separated list of types to paint,
+	 and <I>x y</I> are coordinates in the layout coordinate system.
       </BLOCKQUOTE>
    </BLOCKQUOTE>
 
@@ -52,7 +53,11 @@ Paint mask information into the current edit cell
       position of the (X11) cursor and fills the cursor box with these
       types.  However, when no material (e.g., "space") is present under
       the cursor, then all material and labels are erased from the
-      area of the cursor box.
+      area of the cursor box. <P>
+
+      The "<B>paint pick</B> <I>x y</I>" option works like "<B>paint
+      cursor</B>", but the type of paint is selected from the given
+      position in layout coordinates instead of a pointer position.
    </BLOCKQUOTE>
 
 <H3>Implementation Notes:</H3>
@@ -71,6 +76,6 @@ Paint mask information into the current edit cell
     <TD> <A HREF=commands.html>Return to command index</A>
   </TR>
 </TABLE>
-<P><I>Last updated:</I> November 8, 2004 at 3:02pm <P>
+<P><I>Last updated:</I> March 7, 2020 at 1:06pm <P>
 </BODY>
 </HTML>

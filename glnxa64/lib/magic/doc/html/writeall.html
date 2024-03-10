@@ -13,9 +13,9 @@
     A.red:active {color: yellow }
   </STYLE>
 </HEAD>
-<TITLE>Magic-7.3 Command Reference</TITLE>
+<TITLE>Magic-8.3 Command Reference</TITLE>
 <BODY BACKGROUND=graphics/blpaper.gif>
-<H1> <IMG SRC=graphics/magic_title2.gif ALT="Magic VLSI Layout Tool Version 7.3">
+<H1> <IMG SRC=graphics/magic_title8_3.png ALT="Magic VLSI Layout Tool Version 8.3">
      <IMG SRC=graphics/magic_OGL_sm.gif ALIGN="top" ALT="*"> </H1>
 
 <H2>writeall</H2>
@@ -31,7 +31,7 @@ Write out all modified cells to disk
 
 <H3>Usage:</H3>
    <BLOCKQUOTE>
-      <B>writeall</B> [<B>force</B> <I>cell1 cell2...</I>]<BR><BR>
+      <B>writeall</B> [<B>force</B>|<B>modified</B>|<B>noupdate</B> <I>cell1 cell2...</I>]<BR><BR>
    </BLOCKQUOTE>
 
 <H3>Summary:</H3>
@@ -65,11 +65,20 @@ Write out all modified cells to disk
         </CENTER> 
       </BLOCKQUOTE>
 
-      With the option <B>write force</B>, the command writes all cells
+      With the option <B>writeall force</B>, the command writes all cells
       in the hierarchy with no prompting.  If one or more cell names
       follows <B>write force</B>, the cells listed will be written 
       (action "write") and all other cells will be ignored (action
-      "skip").
+      "skip"). <P>
+
+      With the option <B>writeall modified</B>, the command writes all
+      cells in the hierarchy which have been modified, ignoring those
+      cells marked as needing only a bounding box or timestamp update. <P>
+
+      With the option <B>writeall noupdate</B>, the command writes all
+      cells in the hierarchy like it would for <B>write force</B>, but
+      it does not update timestamps. <P>
+
    </BLOCKQUOTE>
 
 <H3>Implementation Notes:</H3>
@@ -88,6 +97,6 @@ Write out all modified cells to disk
     <TD> <A HREF=commands.html>Return to command index</A>
   </TR>
 </TABLE>
-<P><I>Last updated:</I> December 4, 2005 at 8:09pm <P>
+<P><I>Last updated:</I> March 7, 2020 at 1:06pm <P>
 </BODY>
 </HTML>

@@ -13,9 +13,9 @@
     A.red:active {color: yellow }
   </STYLE>
 </HEAD>
-<TITLE>Magic-7.3 Command Reference</TITLE>
+<TITLE>Magic-8.3 Command Reference</TITLE>
 <BODY BACKGROUND=graphics/blpaper.gif>
-<H1> <IMG SRC=graphics/magic_title2.gif ALT="Magic VLSI Layout Tool Version 7.3">
+<H1> <IMG SRC=graphics/magic_title8_3.png ALT="Magic VLSI Layout Tool Version 8.3">
      <IMG SRC=graphics/magic_OGL_sm.gif ALIGN="top" ALT="*"> </H1>
 
 <H2>erase</H2>
@@ -39,11 +39,12 @@ Erase paint from the layout inside the bounds of the cursor box.
 
 <H3>Usage:</H3>
    <BLOCKQUOTE>
-      <B>erase</B> [<I>layers</I>|<B>cursor</B>] <BR><BR>
+      <B>erase</B> [<I>layers</I>|<B>cursor</B>|<B>pick</B> <I>x y</I>] <BR><BR>
       <BLOCKQUOTE>
          where <I>layers</I> is a comma-separated list of layer types
 	 to be erased, or <B>*</B> to indicate all paint but not labels,
-         or <B>$</B> to indicate both paint and labels.
+         or <B>$</B> to indicate both paint and labels; and where <I>x</I>
+	 and <I>y</I> are values in the layout coordinate system.
       </BLOCKQUOTE>
    </BLOCKQUOTE>
 
@@ -60,7 +61,17 @@ Erase paint from the layout inside the bounds of the cursor box.
 
       The option "<B>erase cursor</B>" picks the layers at the position
       of the (X11) cursor and erases these from the area of the cursor
-      box.
+      box. <P>
+
+      The option "<B>erase pick</B> <I>x y</I>" works like "<B>erase
+      cursor</B>", but the type of material to erase is selected from
+      the given position in layout coordinates instead of a pointer
+      position. <P>
+
+      Note that when applied to contact types, "<B>erase</B>" will erase
+      the entire contact, including the top and bottom metal types
+      comprising the contact.  To remove the contact cuts without affecting
+      the surrounding material, use the "<B>contact erase</B>" command. <P>
    </BLOCKQUOTE>
 
 <H3>Implementation Notes:</H3>
@@ -71,6 +82,7 @@ Erase paint from the layout inside the bounds of the cursor box.
 <H3>See Also:</H3>
    <BLOCKQUOTE>
       <A HREF=paint.html><B>paint</B></A> <BR>
+      <A HREF=contact.html><B>contact</B></A> <BR>
    </BLOCKQUOTE>
 
 <P><IMG SRC=graphics/line1.gif><P>
@@ -79,6 +91,6 @@ Erase paint from the layout inside the bounds of the cursor box.
     <TD> <A HREF=commands.html>Return to command index</A>
   </TR>
 </TABLE>
-<P><I>Last updated:</I> November 8, 2004 at 3:02pm <P>
+<P><I>Last updated:</I> March 7, 2020 at 1:06pm <P>
 </BODY>
 </HTML>
