@@ -11,12 +11,12 @@ This documentation is NOT for users, only if you are interested to compile, inst
  
 **USING SOURCE FROM GIT REPO**
 
-- Compiled on Linux AWS Lightsail **5.4.0-1049-aws** #51~**18.04.1-Ubuntu**
+- **magic 8.3.464** compiled on linode VM running Ubuntu 22.04 kernel  5.15.0-100-generic #110-Ubuntu 03/09/24
 - cd ```/home/ubuntu/sit-git-repos/eda-src```
 - ```git clone git://opencircuitdesign.com/magic```
 - ```cd magic```
 - ```git checkout magic-8.3```
-- Configure: To see all configure options ```./configure -----help```. To install in root with all default options just type ```./configure```
+- Configure: To see all configure options ```./configure --help```. To install in root with all default options just type ```./configure```
 - To install it in a user directory for eg. in ```$HOME/eda-bins/magic```: 
 ```bash 
 ./configure --prefix=$HOME/eda-bins/magic
