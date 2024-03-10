@@ -21,7 +21,7 @@ proc magic::suspendall {} {
 	    set framename $window
          }
          if {[incr Winopts(${framename},suspend)] == 1} {
-	    $window update suspend
+	    $window updatedisplay suspend
          }
       }
    }
@@ -42,7 +42,7 @@ proc magic::resumeall {} {
 	    incr Winopts($framename,suspend) -1
 	    if { $Winopts(${framename},suspend) <= 0 } {
 	       unset Winopts(${framename},suspend)
-	       $window update resume
+	       $window updatedisplay resume
 	    }
 	 }
       }
@@ -355,6 +355,9 @@ proc magic::ruler {{text {}} {orient auto}} {
    set mmx [expr {($llx + $urx) / 2}]
    set mmy [expr {($lly + $ury) / 2}]
 
+   set snapsave [snap]
+   snap internal
+
    if {$orient == "horizontal"} {
       element add line l1_$Opts(rulers) black $llx $lly $llx $ury
       element add line l4_$Opts(rulers) black $urx $lly $urx $ury
@@ -407,6 +410,7 @@ proc magic::ruler {{text {}} {orient auto}} {
 	  element configure l3_$Opts(rulers) flags arrowbottom
       }
    }
+   snap $snapsave
 }
 
 #---------------------------------------------------------------------

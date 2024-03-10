@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # For installation, put this file (magic.sh) in a known executable path.
 # Put startup script "magic.tcl", shared library "tclmagic.so", and
@@ -13,12 +13,15 @@
 
 TCL_MAG_DIR=${CAD_ROOT}/magic/tcl
 if [ "${TCL_MAG_DIR}" = "/magic/tcl" ]; then
-   TCL_MAG_DIR=/home/ubuntu/eda-bins/magic/lib/magic/tcl
+   TCL_MAG_DIR=${MAGIC_HOME}/lib/magic/tcl
 fi
 TKCON=true
 DNULL=
-MAGIC_WISH=/usr/bin/wish
-export MAGIC_WISH
+
+if [ -z "$MAGIC_WISH" ]; then
+   MAGIC_WISH=/usr/bin/wish
+   export MAGIC_WISH
+fi
 
 # Hacks for Cygwin
 if [ "`uname | cut -d_ -f1`" = "CYGWIN" ]; then
@@ -33,6 +36,7 @@ for i in "$@" ; do
       -noc*) TKCON=;;
       -dnull) DNULL=true;;
       --version) TKCON=; DNULL=true;;
+      --commit) TKCON=; DNULL=true;;
       --prefix) TKCON=; DNULL=true;;
       *) arglist="$arglist${arglist:+ }\"${i//\"/\\\"}\"";;
    esac

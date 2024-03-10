@@ -4,6 +4,8 @@
 # the same directory. Also see comments in shell script "magic.sh".
 
 global Opts
+#This was set post install to pass the env variable from bin/magic
+set MAGIC_HOME $::env(MAGIC_HOME)
 
 # If we called magic via the non-console script, then we want to reset
 # the environment variable HOME to its original value.
@@ -202,7 +204,11 @@ for {set i 0} {$i < $argc} {incr i 1} {
          lappend argafter [lindex $argv $i]
       }
       ^--version {
-	 puts stdout "8.3.178"
+	 puts stdout "8.3.464"
+	 exit 0
+      }
+      ^--commit {
+	 puts stdout "cb73ebfab02e6eed32f08287b45522c61ef542f8"
 	 exit 0
       }
       ^--prefix {
@@ -355,10 +361,42 @@ drc off
 
 if {[info commands magic::openwrapper] != {}} {
    if {[windownames layout] == {}} {
-      set winname [magic::openwrapper]
+      if {[magic::display] == "NULL"} {
+          magic::openwindow
+          rename magic::openwrapper magic::_openwrapper
+      } else {
+          set winname [magic::openwrapper]
+          magic::scrollupdate $winname
+      }
       magic::techmanager initall
-      magic::scrollupdate $winname
 
+      foreach cellname $celllist {
+	 set fext [file extension $cellname]
+         puts stdout "handling file entry $cellname extension $fext"
+	 switch $fext {
+	     .lef -
+	     .LEF {lef read $cellname}
+	     .def -
+	     .DEF {def read $cellname}
+	     .gds -
+	     .GDS -
+	     .gds2 -
+	     .GDS2 -
+	     .gdsii -
+	     .GDSII {gds read $cellname}
+	     .cif -
+	     .CIF {cif read $cellname}
+	     .tcl {source $cellname}
+	     .mag -
+	     "" {magic::load $cellname}
+	     default {puts stderr "don't know how to load file $cellname"}
+	 }
+      }
+   }
+} elseif {[info commands wm] == {}} {
+   # Magic running with Tcl but in NULL graphics mode.
+   if {[windownames layout] == {}} {
+      magic::openwindow
       foreach cellname $celllist {
 	 set fext [file extension $cellname]
          puts stdout "handling file entry $cellname extension $fext"

@@ -78,6 +78,7 @@ macro ^Z "findbox zoom"
 macro Control_Shift_XK_z "center"
 # Question mark
 macro ? "drc why"
+macro ! "drc find; findbox zoom; zoom 16"
 macro / "select area; what ; select clear"
 # Comma key
 macro , "select clear"

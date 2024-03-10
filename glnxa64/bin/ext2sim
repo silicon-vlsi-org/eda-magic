@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Standalone script for ext2sim, for Tcl-based magic 8.0
 #
@@ -16,7 +16,7 @@ for i in $@; do
 done
 TCL_MAG_DIR=${CAD_ROOT}/magic/tcl
 if [ "${TCL_MAG_DIR}" = "/magic/tcl" ]; then
-   TCL_MAG_DIR=/home/ubuntu/eda-bins/magic/lib/magic/tcl
+   TCL_MAG_DIR=${MAGIC_HOME}/lib/magic/tcl
 fi
 #
 eval ${TCL_MAG_DIR}/magicdnull -dnull -noconsole -nowrapper $mgargs <<EOF
