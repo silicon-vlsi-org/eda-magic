@@ -204,11 +204,11 @@ for {set i 0} {$i < $argc} {incr i 1} {
          lappend argafter [lindex $argv $i]
       }
       ^--version {
-	 puts stdout "8.3.464"
+	 puts stdout "8.3.526"
 	 exit 0
       }
       ^--commit {
-	 puts stdout "cb73ebfab02e6eed32f08287b45522c61ef542f8"
+	 puts stdout "02669de267fb4b658306946d36323b6601df639d"
 	 exit 0
       }
       ^--prefix {
@@ -228,7 +228,10 @@ for {set i 0} {$i < $argc} {incr i 1} {
 
 if {$do_wrapper} {
   source ${CAD_ROOT}/magic/tcl/wrapper.tcl
-  lappend argafter "-nowindow" ;# Set no-initial-window option in magic.
+  # Set the no-initial-window option in magic.  Do *not* append it, as the
+  # arguments may have a Tcl script, for which all following arguments are
+  # considered arguments of the script.
+  set argafter [linsert $argafter 1 -nowindow]
 }
 unset x i do_wrapper
 if {[catch {eval $argafter}]}  {		;# magic::initialize ${argv}
